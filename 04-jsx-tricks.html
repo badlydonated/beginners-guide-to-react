@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="root"></div>
+    <script src="https://unpkg.com/react@16.12.0/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16.12.0/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone@7.8.3/babel.js"></script>
+    <script type="text/babel">
+      const rootElement = document.getElementById('root')
+
+      // JSX
+      const children = 'Hello World'  // Created variables to interpolate a value into the JSX expression using curly braces
+      const className = 'container'
+      const props = {children, className}
+      const element = <div {...props} className="not-container" />  //adding a new value for className after the props object, overwrites the className property in the props obj
+      ReactDOM.render(element, rootElement)
+    </script>
+  </body>
+</html>

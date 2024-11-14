@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="root"></div>
+    <script src="https://unpkg.com/react@16.12.0/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16.12.0/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone@7.8.3/babel.js"></script>
+    <script type="text/babel">
+        // DO NOT USE THESE 
+        // const userName = document.querySelector('input').value // this one breaks encapsulation of our components
+        // const userName = event.target[0].value       // these aren't good since they rely on the order that the elements are rendered
+                                                        // and could easily break if that order was changed
+        // const userName = event.target.elements[0].value
+        function UsernameForm(){
+            function handleSubmit(event){
+                event.preventDefault()
+                const userName = event.target.elements.userNameInput.value
+                alert(`You entered ${userName}`)
+            }
+            return (
+                <form onSubmit={handleSubmit}>
+                    <div>
+                        <label htmlFor='userNameInput'>Username:</label> 
+                        // It is recommended to use htmlFor and id to associate labels to inputs
+                        <input id='userNameInput' type="text" />
+                    </div>
+                    <button type='submit'>Submit</button>
+                    // It is very important that any button you put inside a form
+                    // has a type. If you want a canx button, the type should be 'button'
+                </form>
+            )
+        }
+
+    ReactDOM.render(<UsernameForm />, document.getElementById('root'))
+  </script>
+  </body>  
+</html>
